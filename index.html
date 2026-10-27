@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soundarya K | Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #6366f1;
+      --accent-soft: #818cf8;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--text); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 90vh;
+    }
+
+    #hero .greeting {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    #hero h1 span { color: var(--accent-soft); }
+
+    #hero p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+    }
+
+    /* ── ABOUT ── */
+    #about p { color: var(--muted); max-width: 620px; }
+    #about p + p { margin-top: 1rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .card-icon { font-size: 1.8rem; }
+
+    .card h3 { font-size: 1rem; font-weight: 700; }
+
+    .card p { font-size: 0.875rem; color: var(--muted); flex: 1; }
+
+    .card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .tag {
+      font-size: 0.75rem;
+      background: rgba(99,102,241,0.12);
+      color: var(--accent-soft);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .card-links { display: flex; gap: 1rem; }
+
+    .card-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .card-links a:hover { color: var(--accent-soft); }
+
+    /* ── CONTACT ── */
+    #contact p { color: var(--muted); margin-bottom: 1.5rem; }
+
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav ul { gap: 1.25rem; }
+      #hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#">Soundarya.dev</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="greeting">Hi, my name is</p>
+    <h1>Soundarya K.<br /><span>I engineer reliable software.</span></h1>
+    <p>
+      Software Engineer specializing in Java, Spring Boot, and backend development —
+      with a strong foundation in SDET practices and automated test solutions.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-outline" href="#contact">Get In Touch</a>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2>A bit about myself</h2>
+    <p>
+      Software Engineer with expertise in Java, Spring Boot, and backend application development,
+      complemented by strong experience in Software Development Engineer in Test (SDET) practices.
+      Passionate about developing scalable applications and resilient software systems, and proficient
+      in designing automated test solutions.
+    </p>
+    <p>
+      Driven by a curiosity for technology and continuous learning, I enjoy solving complex problems
+      and delivering high-quality solutions while embracing modern software engineering practices.
+      In my free time, I love exploring cloud architecture — diving into cloud-native patterns,
+      serverless computing, and modern infrastructure to keep building on what I know.
+    </p>
+    <p style="margin-top:1.25rem;">
+      <a href="https://www.linkedin.com/in/soundarya-k-0483871b1" target="_blank" rel="noopener"
+         style="color: var(--accent-soft); text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+        View my LinkedIn Profile →
+      </a>
+    </p>
+  </section>
+
+  <hr />
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">What I work with</p>
+    <h2>Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-tag">Java</div>
+      <div class="skill-tag">Spring Boot</div>
+      <div class="skill-tag">Spring MVC</div>
+      <div class="skill-tag">REST APIs</div>
+      <div class="skill-tag">Microservices</div>
+      <div class="skill-tag">Selenium</div>
+      <div class="skill-tag">TestNG</div>
+      <div class="skill-tag">JUnit</div>
+      <div class="skill-tag">Maven</div>
+      <div class="skill-tag">Git</div>
+      <div class="skill-tag">SQL</div>
+      <div class="skill-tag">CI/CD</div>
+      <div class="skill-tag">MCP</div>
+      <div class="skill-tag">Snowflake</div>
+      <div class="skill-tag">Docker</div>
+      <div class="skill-tag">Kubernetes</div>
+      <div class="skill-tag">GitHub Copilot</div>
+      <div class="skill-tag">AWS</div>
+      <div class="skill-tag">Shell Scripting</div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">What I've built</p>
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <h3>CloudDash</h3>
+        <p>A real-time AWS cost monitoring dashboard with budget alerts and usage breakdowns.</p>
+        <div class="card-tags">
+          <span class="tag">React</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Node.js</span>
+        </div>
+        <div class="card-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>NoteSync</h3>
+        <p>Markdown note-taking app with real-time sync across devices using WebSockets.</p>
+        <div class="card-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">WebSockets</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+        <div class="card-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>DevBot CLI</h3>
+        <p>A terminal tool that scaffolds project boilerplate and automates common dev tasks.</p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">CLI</span>
+          <span class="tag">Docker</span>
+        </div>
+        <div class="card-links">
+          <a href="#">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">What's next?</p>
+    <h2>Get In Touch</h2>
+    <p>
+      I'm currently open to new opportunities. Whether you have a question,
+      a project in mind, or just want to say hi — my inbox is always open.
+    </p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:alex@example.com">Say Hello ✉️</a>
+      <a class="btn btn-outline" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/soundarya-k-0483871b1" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed &amp; Built by Soundarya K &mdash; 2026</p>
+  </footer>
+
+</body>
+</html>
